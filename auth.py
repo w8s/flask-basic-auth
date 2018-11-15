@@ -47,6 +47,8 @@ def authenticate():
 def check_auth(username, password):
     """Checks that user creds are valid."""
     u = User.query.filter_by(username=username).first()
+    if not u:
+        return False
     return username == u.username and password == u.password
 
 
